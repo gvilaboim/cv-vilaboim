@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Gonçalo Vilaboim · Social Media Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* FORCE LIGHT MODE — ignore system dark mode completely */
+:root {
+  color-scheme: light only;
+  --cream: #faf8f4;
+  --warm-white: #ffffff;
+  --ink: #1a1714;
+  --mid: #4a4540;
+  --muted: #9a948e;
+  --border: #e8e2da;
+  --orange: #e85d2f;
+  --orange-light: #fff0eb;
+  --teal: #1a7a6e;
+  --teal-light: #e8f5f3;
+  --sand: #f2ede5;
+}
+
+/* Hard override — never let the browser recolor anything */
+html, body, div, section, aside, nav, main, header, footer,
+p, h1, h2, h3, span, a, li, ul {
+  color: revert;
+  background-color: revert;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+  forced-color-adjust: none;
+}
+
+body {
+  font-family: 'Instrument Sans', sans-serif;
+  background-color: #faf8f4 !important;
+  color: #1a1714 !important;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250,248,244,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #e8e2da;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+}
+
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: #1a1714;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  color: #4a4540;
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: #e85d2f; }
+
+.nav-cta {
+  background: #1a1714;
+  color: #faf8f4 !important;
+  padding: 8px 18px;
+  border-radius: 100px;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: #e85d2f !important; color: white !important; }
+
+/* HERO */
+.hero {
+  padding: 80px 40px 72px;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: start;
+  animation: fadeUp 0.6s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #e8f5f3;
+  color: #1a7a6e;
+  border: 1px solid #b8ddd9;
+  border-radius: 100px;
+  padding: 5px 14px 5px 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  letter-spacing: 0.02em;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 7px; height: 7px;
+  background: #1a7a6e;
+  border-radius: 50%;
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(42px, 6vw, 68px);
+  line-height: 1.0;
+  color: #1a1714;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.hero-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #e85d2f;
+  margin-bottom: 20px;
+  letter-spacing: 0.01em;
+}
+
+.hero-bio {
+  font-size: 16px;
+  color: #4a4540;
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.hero-bio strong { color: #1a1714; font-weight: 600; }
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: #e85d2f;
+  color: white;
+  padding: 13px 26px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 16px rgba(232,93,47,0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,93,47,0.35); }
+
+.btn-secondary {
+  background: transparent;
+  color: #1a1714;
+  padding: 13px 26px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  border: 1.5px solid #e8e2da;
+  transition: border-color 0.15s, background 0.15s;
+}
+.btn-secondary:hover { border-color: #1a1714; background: #f2ede5; }
+
+/* STATS BAR */
+.stats-bar {
+  background: #1a1714;
+  padding: 28px 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 100%;
+  animation: fadeUp 0.6s 0.15s ease both;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 0 20px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.stat-item:last-child { border-right: none; }
+
+.stat-number {
+  font-family: 'Syne', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: #e85d2f;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+}
+
+/* MAIN CONTENT */
+.content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 64px 40px;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 56px;
+  align-items: start;
+}
+
+/* SECTION TITLES */
+.section-eyebrow {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #e85d2f;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1714;
+  margin-bottom: 28px;
+  letter-spacing: -0.01em;
+}
+
+/* EXPERIENCE */
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.exp-item {
+  display: grid;
+  grid-template-columns: 3px 1fr;
+  gap: 0 20px;
+  padding-bottom: 36px;
+  position: relative;
+  animation: fadeUp 0.5s ease both;
+}
+
+.exp-item:nth-child(1) { animation-delay: 0.1s; }
+.exp-item:nth-child(2) { animation-delay: 0.2s; }
+.exp-item:nth-child(3) { animation-delay: 0.3s; }
+.exp-item:nth-child(4) { animation-delay: 0.4s; }
+.exp-item:nth-child(5) { animation-delay: 0.5s; }
+
+.timeline-line {
+  width: 3px;
+  background: #e8e2da;
+  position: relative;
+  border-radius: 3px;
+}
+
+.exp-item:first-child .timeline-line { background: linear-gradient(to bottom, #e85d2f, #e8e2da); }
+
+.timeline-dot {
+  width: 11px;
+  height: 11px;
+  background: #faf8f4;
+  border: 2.5px solid #e8e2da;
+  border-radius: 50%;
+  position: absolute;
+  top: 4px;
+  left: -4px;
+}
+
+.exp-item:first-child .timeline-dot {
+  border-color: #e85d2f;
+  background: #e85d2f;
+  box-shadow: 0 0 0 4px #fff0eb;
+}
+
+.exp-body { padding-top: 0; }
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.exp-role {
+  font-family: 'Syne', sans-serif;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #1a1714;
+}
+
+.exp-period {
+  font-size: 12px;
+  color: #9a948e;
+  background: #f2ede5;
+  padding: 3px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.exp-company {
+  font-size: 13px;
+  color: #e85d2f;
+  font-weight: 600;
+  margin-bottom: 10px;
+  letter-spacing: 0.02em;
+}
+
+.exp-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.exp-bullets li {
+  font-size: 13.5px;
+  color: #4a4540;
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.55;
+}
+
+.exp-bullets li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: #9a948e;
+}
+
+.exp-bullets li strong { color: #1a1714; font-weight: 600; }
+
+.exp-tag {
+  display: inline-block;
+  background: #e8f5f3;
+  color: #1a7a6e;
+  border-radius: 100px;
+  padding: 2px 10px;
+  font-size: 11.5px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+/* SIDEBAR */
+.sidebar-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: sticky;
+  top: 80px;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e8e2da;
+  border-radius: 16px;
+  padding: 22px;
+  animation: fadeUp 0.5s 0.3s ease both;
+}
+
+.card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9a948e;
+  margin-bottom: 16px;
+}
+
+/* CONTACT CARD */
+.contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #4a4540;
+}
+
+.contact-icon {
+  width: 30px; height: 30px;
+  background: #f2ede5;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* SKILLS CARD */
+.skills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.skill-pill {
+  background: #f2ede5;
+  color: #4a4540;
+  border-radius: 100px;
+  padding: 5px 13px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid #e8e2da;
+  transition: background 0.15s, color 0.15s;
+}
+
+.skill-pill:hover { background: #e85d2f; color: white; border-color: #e85d2f; }
+
+/* LANGUAGES */
+.lang-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #e8e2da;
+  font-size: 13.5px;
+}
+.lang-row:last-child { border-bottom: none; }
+.lang-name { font-weight: 500; color: #1a1714; }
+.lang-level { font-size: 11.5px; color: #1a7a6e; font-weight: 600; letter-spacing: 0.06em; background: #e8f5f3; padding: 2px 9px; border-radius: 100px; }
+
+/* PROJECTS CARD */
+.project-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.15s;
+  margin-bottom: 4px;
+}
+.project-link:hover { background: #f2ede5; }
+
+.project-icon {
+  width: 36px; height: 36px;
+  background: #fff0eb;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.project-name { font-size: 13px; font-weight: 600; color: #1a1714; }
+.project-sub { font-size: 11.5px; color: #9a948e; }
+
+/* FOOTER */
+footer {
+  background: #1a1714;
+  text-align: center;
+  padding: 32px 40px;
+  color: rgba(255,255,255,0.4);
+  font-size: 13px;
+}
+
+footer span { color: #e85d2f; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 48px 20px 40px; }
+  .stats-bar { grid-template-columns: repeat(2, 1fr); padding: 24px 20px; gap: 16px; }
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 16px; }
+  .stat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.1); }
+  .stat-item:last-child, .stat-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+  .content { grid-template-columns: 1fr; padding: 40px 20px; }
+  .sidebar-col { position: static; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Gonçalo Vilaboim</div>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:gonvipa@gmail.com" class="nav-links nav-cta" style="text-decoration:none; font-family: 'Instrument Sans', sans-serif; font-weight:600; font-size:13px; background:#1a1714; color:#faf8f4; padding:8px 18px; border-radius:100px; transition:background 0.2s;">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-badge">Available for part-time · Lisboa & Ibiza</div>
+    <h1 class="hero-name">Gonçalo<br>Vilaboim</h1>
+    <p class="hero-title">Social Media Manager · Nightlife & Events</p>
+    <p class="hero-bio">
+      I build nightlife brands that people actually follow. <strong>4+ years</strong> growing event brands from zero — 
+      generating <strong>1.8M organic views in 90 days</strong>, scaling events to <strong>1,200+ attendees</strong>, 
+      and currently managing social media for a club in Ibiza. I know how to turn content into ticket sales.
+    </p>
+    <div class="hero-actions">
+      <a href="mailto:gonvipa@gmail.com" class="btn-primary">Get in touch →</a>
+      <a href="https://www.instagram.com/vlb.wav" target="_blank" class="btn-secondary">@vlb.wav ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">1.8M</div>
+    <div class="stat-label">Organic views<br>in 90 days (2025)</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">1200+</div>
+    <div class="stat-label">Event attendees<br>from digital campaigns</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">7</div>
+    <div class="stat-label">Social accounts<br>managed simultaneously</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">4+</div>
+    <div class="stat-label">Years in nightlife<br>& digital marketing</div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="content">
+  <div>
+    <p class="section-eyebrow" id="experience">Work Experience</p>
+    <h2 class="section-title">Where I've Made an Impact</h2>
+
+    <div class="experience-list">
+
+      <!-- KOMPLEX -->
+      <div class="exp-item">
+        <div class="timeline-line"><div class="timeline-dot"></div></div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <span class="exp-role">Social Media Manager</span>
+            <span class="exp-period">2025 – Present</span>
+          </div>
+          <p class="exp-company">KØMPLEX Lisbon · Lisboa, Portugal · Part-time</p>
+          <ul class="exp-bullets">
+            <li>Weekly content planning and editorial calendar management for the venue</li>
+            <li>Daily posts and stories crafted to <strong>drive online ticket sales</strong></li>
+            <li>Flyer creation and visual design for all events</li>
+            <li>Managing <strong>5 Instagram accounts + 2 TikTok accounts</strong> simultaneously:<br>
+              <span style="font-size:12px; color:#9a948e;">@komplexlisbon · @disturbtechno · @tuttyfrutty_pt · @propermgmt.live + 1 more</span>
+            </li>
+            <li>Audience behaviour analysis to <strong>optimise posting times and reach</strong></li>
+          </ul>
+          <span class="exp-tag">🌴 Currently active</span>
+        </div>
+      </div>
+
+      <!-- RIOT.LX -->
+      <div class="exp-item">
+        <div class="timeline-line"><div class="timeline-dot"></div></div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <span class="exp-role">Social Media Manager</span>
+            <span class="exp-period">2025 – Present</span>
+          </div>
+          <p class="exp-company">Riot.lx · Event Brand · Lisboa · Freelance</p>
+          <ul class="exp-bullets">
+            <li>Full social media management for an independent event brand in Lisbon</li>
+            <li>Content creation, event promotion and community growth strategy</li>
+          </ul>
+          <span class="exp-tag">📸 instagram.com/riot.lx</span>
+        </div>
+      </div>
+
+      <!-- CREATE -->
+      <div class="exp-item">
+        <div class="timeline-line"><div class="timeline-dot"></div></div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <span class="exp-role">Content Creator & Marketing Strategist</span>
+            <span class="exp-period">2025 – Present</span>
+          </div>
+          <p class="exp-company">Create · Freelance</p>
+          <ul class="exp-bullets">
+            <li>Content production using <strong>attention-grabbing techniques</strong> engineered for digital audiences</li>
+            <li>Creation of marketing strategies and content frameworks for client brands</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ESTRAGO -->
+      <div class="exp-item">
+        <div class="timeline-line"><div class="timeline-dot"></div></div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <span class="exp-role">Founder & Social Media Manager</span>
+            <span class="exp-period">2021 – Present</span>
+          </div>
+          <p class="exp-company">Estrago · Event Brand · Portugal</p>
+          <ul class="exp-bullets">
+            <li>Built the brand from zero — identity, content strategy, and community growth</li>
+            <li><strong>1.8 million organic views in 90 days</strong> (early 2025)</li>
+            <li>Managed all content: reels, teasers, posters, copywriting and Meta Ads campaigns</li>
+            <li>Developed <strong>audience retention strategies</strong> converting followers into loyal event attendees</li>
+            <li>Scaled live events to <strong>1,200+ attendees</strong> through digital-first marketing</li>
+          </ul>
+          <span class="exp-tag">📸 instagram.com/estrago_label</span>
+        </div>
+      </div>
+
+      <!-- NEPTUNEFEST -->
+      <div class="exp-item">
+        <div class="timeline-line"><div class="timeline-dot"></div></div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <span class="exp-role">Founder & Social Media Manager</span>
+            <span class="exp-period">2022 – 2024</span>
+          </div>
+          <p class="exp-company">NeptuneFest · Event Brand · Portugal</p>
+          <ul class="exp-bullets">
+            <li>Co-founded a second event brand with its own visual identity and digital presence</li>
+            <li>End-to-end content creation: posters, videos, copywriting, social management</li>
+            <li>Ran <strong>Meta Ads campaigns</strong> for ticket sales and brand awareness</li>
+          </ul>
+          <span class="exp-tag">📸 instagram.com/neptunefest</span>
+        </div>
+      </div>
+
+      <!-- NAV -->
+      <div class="exp-item">
+        <div class="timeline-line"><div class="timeline-dot"></div></div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <span class="exp-role">Social Media & Digital Marketing</span>
+            <span class="exp-period">2021 – 2024</span>
+          </div>
+          <p class="exp-company">NAV Club · Lisboa, Portugal</p>
+          <ul class="exp-bullets">
+            <li>Social media management and digital marketing for the venue</li>
+            <li>Ticketing platform and event management</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar-col" id="contact">
+
+    <div class="card">
+      <p class="card-title">Contact</p>
+      <ul class="contact-list">
+        <li>
+          <div class="contact-icon">✉️</div>
+          gonvipa@gmail.com
+        </li>
+        <li>
+          <div class="contact-icon">📍</div>
+          Ibiza, Spain
+        </li>
+        <li>
+          <div class="contact-icon">📱</div>
+          +351 936 861 023
+        </li>
+        <li>
+          <div class="contact-icon">📸</div>
+          <a href="https://www.instagram.com/vlb.wav" target="_blank" style="color:#1a1714; text-decoration:none;">@vlb.wav</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card" id="skills">
+      <p class="card-title">Skills</p>
+      <div class="skills-wrap">
+        <span class="skill-pill">Content Planning</span>
+        <span class="skill-pill">Meta Ads</span>
+        <span class="skill-pill">TikTok Strategy</span>
+        <span class="skill-pill">Reels & Short Video</span>
+        <span class="skill-pill">Copywriting</span>
+        <span class="skill-pill">Visual Design</span>
+        <span class="skill-pill">Flyer Editing</span>
+        <span class="skill-pill">Audience Retention</span>
+        <span class="skill-pill">Ticket Sales Campaigns</span>
+        <span class="skill-pill">Analytics</span>
+        <span class="skill-pill">Brand Building</span>
+        <span class="skill-pill">Grabbing Attention</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Languages</p>
+      <div class="lang-row">
+        <span class="lang-name">Portuguese</span>
+        <span class="lang-level">Native</span>
+      </div>
+      <div class="lang-row">
+        <span class="lang-name">English</span>
+        <span class="lang-level">Advanced</span>
+      </div>
+      <div class="lang-row">
+        <span class="lang-name">Spanish</span>
+        <span class="lang-level">Conversational</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Projects</p>
+      <a class="project-link" href="https://www.instagram.com/vlb.wav" target="_blank">
+        <div class="project-icon">🎧</div>
+        <div>
+          <p class="project-name">vlb.wav</p>
+          <p class="project-sub">Personal artist profile</p>
+        </div>
+      </a>
+      <a class="project-link" href="https://www.instagram.com/estrago_label" target="_blank">
+        <div class="project-icon">🔥</div>
+        <div>
+          <p class="project-name">Estrago</p>
+          <p class="project-sub">1.8M views · Hard Techno brand</p>
+        </div>
+      </a>
+      <a class="project-link" href="https://instagram.com/neptunefest" target="_blank">
+        <div class="project-icon">🌊</div>
+        <div>
+          <p class="project-name">NeptuneFest</p>
+          <p class="project-sub">Electronic music brand · PT</p>
+        </div>
+      </a>
+      <a class="project-link" href="https://instagram.com/komplexlisbon" target="_blank">
+        <div class="project-icon">🏭</div>
+        <div>
+          <p class="project-name">KØMPLEX Lisbon</p>
+          <p class="project-sub">38K followers · Techno club · Lisboa</p>
+        </div>
+      </a>
+      <a class="project-link" href="https://instagram.com/riot.lx" target="_blank">
+        <div class="project-icon">⚡</div>
+        <div>
+          <p class="project-name">Riot.lx</p>
+          <p class="project-sub">Event brand · Lisboa</p>
+        </div>
+      </a>
+    </div>
+
+  </aside>
+</div>
+
+<footer>
+  <p>© 2026 <span>Gonçalo Vilaboim</span> · Social Media Manager · Ibiza</p>
+</footer>
+
+</body>
+</html>
